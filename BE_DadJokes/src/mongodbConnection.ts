@@ -12,6 +12,7 @@ export const client = new MongoClient(process.env.mongodbURI ?? '', {
     deprecationErrors: true,
   }
 });
+export let db: Db 
 export async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
@@ -19,7 +20,7 @@ export async function run() {
     // Send a ping to confirm a successful connection
     await client.db("DB_DadJokes").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    return client.db('DB_DadJokes')
+    db = client.db('DB_DadJokes')
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();

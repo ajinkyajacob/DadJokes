@@ -1,18 +1,19 @@
 
 import { configDotenv } from "dotenv";
 import express, { Express, Request, Response } from "express";
-import {  run } from "./mongodbConnection";
+import {  db, run } from "./mongodbConnection";
 
 import cors from "cors";
 import morgan from "morgan";
 
 
-async function main(){
     configDotenv()
-    const db = await run().catch(console.dir);
-    if (!db) {
-        throw new Error('No DB!')
-    }
+    run().then(() => {
+        if (!db) {
+            throw new Error('No DB!')
+        }
+
+    }).catch(console.dir);
     const app: Express = express()
     
     const port = process.env.port && Number(process.env.port)
@@ -42,7 +43,5 @@ async function main(){
     
     app.listen(port,()=> console.log(`Listning on port ${port}`))
     
-    module.exports = app;
-}
 
-main().then()
+module.exports = app;
