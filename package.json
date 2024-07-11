@@ -10,7 +10,7 @@
     "fe-install": "cd FE_DadJokes && npm install",
     "be-install": "cd BE_DadJokes && npm install",
     "start": "concurrently --names 'FE,BE'  \"npm run fe-start\"  \"npm run be-start\"",
-    "build": "concurrently --names 'FE,BE'  \"npm run fe-build\"  \"npm run be-build\"",
+    "build": "npm run fe-build  && npm run be-build",
     "install": "concurrently --names 'C,FE,BE' \" npm install concurrently  \"  \"npm run fe-install\"  \"npm run be-install\""
   },
   "dependencies": {

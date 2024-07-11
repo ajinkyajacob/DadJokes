@@ -42,6 +42,7 @@ async function main(){
     
     app.listen(port,()=> console.log(`Listning on port ${port}`))
     
+    module.exports = app;
 }
 
 main().then()

@@ -6,6 +6,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 export const BACKEND_URL = new InjectionToken<string>('BACKEND_URL')
 
 bootstrapApplication(AppComponent,{providers:[
-  {provide: BACKEND_URL, useValue: 'http://localhost:3000/dadjoke'},
+  {provide: BACKEND_URL, useFactory:()=> {
+    return `${window.location.origin}:3000`
+  }},
   provideHttpClient(withFetch())
 ]})
