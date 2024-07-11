@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "@types/node": "^20.14.10"
+  },
+  "scripts": {
+    "fe-start": "cd FE_DadJokes && npm start",
+    "be-start": "cd BE_DadJokes && npm start",
+    "fe-build": "cd FE_DadJokes && npm run build",
+    "be-build": "cd BE_DadJokes && npm run build",
+    "fe-install": "cd FE_DadJokes && npm install",
+    "be-install": "cd BE_DadJokes && npm install",
+    "start": "concurrently --names 'FE,BE'  \"npm run fe-start\"  \"npm run be-start\"",
+    "build": "concurrently --names 'FE,BE'  \"npm run fe-build\"  \"npm run be-build\"",
+    "install": "concurrently --names 'C,FE,BE' \" npm install concurrently  \"  \"npm run fe-install\"  \"npm run be-install\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
