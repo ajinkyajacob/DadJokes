@@ -23,10 +23,9 @@ app.get("/dadjoke", async (_req, res) => {
   const collection = db.collection("dadjokes");
   try {
     console.log(collection.collectionName);
-    const apiRes = await fetch(process.env.JOKE_URL + "s" ?? "", {
+    const apiRes = await fetch(process.env.JOKE_URL?? "", {
       headers: { Accept: "application/json" },
     }).then((x) => x.json());
-    console.log("fetch error");
     const { id: _id, status, ...rest } = apiRes;
     const foundRecord = await collection.findOne({ _id: _id });
     if (foundRecord) return res.json(foundRecord);
