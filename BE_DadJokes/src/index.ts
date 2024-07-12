@@ -1,13 +1,14 @@
 
-import { configDotenv } from "dotenv";
-import express, { Express, Request, Response } from "express";
+import { config } from "dotenv";
+import express, { Express} from "express";
 import {  db, run } from "./mongodbConnection";
 
 import cors from "cors";
 import morgan from "morgan";
+import path from "path";
 
 
-    configDotenv()
+    config()
     run().then(() => {
         if (!db) {
             throw new Error('No DB!')
@@ -18,12 +19,13 @@ import morgan from "morgan";
     
     const port = process.env.port && Number(process.env.port)
     app.use(cors())
+    app.use(express.static(path.join(__dirname, 'public')))
     app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
-    app.get('/',(req, res)=>{
+    app.get('/',(_req, res)=>{
         res.send('Hello World')
     })
     
-    app.get('/dadjoke',async (req,res) => {
+    app.get('/dadjoke',async (_req,res) => {
         const collection = db.collection('dadjokes')
         try {
             console.log(collection.collectionName)
@@ -31,13 +33,13 @@ import morgan from "morgan";
             const {id:_id,status,...rest} = apiRes
             const foundRecord = await collection.findOne({_id:_id})
             if(foundRecord) return res.json(foundRecord)
-            const result = await collection.insertOne({...rest,_id})
+            await collection.insertOne({...rest,_id})
             return  res.json(apiRes)
         } catch (error) {
             // if(error.)
             // res.send(200).json(await collection.aggregate([{ $sample: { size: 1 } }]))   
                 console.error(error)
-            res.status(500).json(error)
+           return res.status(500).json(error)
         }
     })
     

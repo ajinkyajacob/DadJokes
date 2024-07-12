@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "mkdir -p ../dist/api && cp -r ./src/* $_",
+    "build": "tsc -b",
     "start": "nodemon"
   },
   "author": "",
@@ -18,7 +18,8 @@
     "mongoose": "^8.5.0",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.4",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

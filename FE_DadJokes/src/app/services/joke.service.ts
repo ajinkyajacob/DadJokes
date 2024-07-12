@@ -7,7 +7,7 @@ export class JokeService {
     private httpClient= inject(HttpClient)
     private url = inject(BACKEND_URL)
     getJoke(){
-        return this.httpClient.get<Joke>(this.url,{responseType:'json'})
+        return this.httpClient.get<Joke>(`${this.url}/dadjoke`,{responseType:'json'})
     }
     
 }
