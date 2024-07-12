@@ -29,7 +29,7 @@ app.get("/dadjoke", async (_req, res) => {
     const { id: _id, status, ...rest } = apiRes;
     const foundRecord = await collection.findOne({ _id: _id });
     if (foundRecord) return res.json(foundRecord);
-    collection.insertOne({ ...rest, _id });
+    await collection.insertOne({ ...rest, _id });
     close();
     return res.json(apiRes);
   } catch (error: any) {
