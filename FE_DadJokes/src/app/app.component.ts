@@ -26,8 +26,8 @@ import { EMPTY, catchError, fromEvent, switchMap, tap } from 'rxjs';
     }
 
     <button
+    #refreshBtn
       class="bg-skyBlue self-center font-bold text-2xl h-1/6 w-1/3 rounded-md p-4 text-white hover:text-pastelYellow hover:bg-green-400 border-orange"
-      #refreshBtn
     >
       New Joke
     </button>
@@ -50,21 +50,19 @@ export class AppComponent {
   a = signal(0);
   b = signal(0);
   constructor() {
-    const a = computed(() => this.a() + this.b());
     effect(() => {
       const el = this.refreshBtn()?.nativeElement;
       if (el) {
         fromEvent(el, 'mousedown')
           .pipe(
-            tap((x) => console.log({ x })),
             switchMap(() =>
               this.jokeService.getJoke().pipe(catchError((e) => {console.log(e);return EMPTY}))
             ),
-            tap((x) => console.log({ x }))
           )
           .subscribe((v) => this.joke.set(v));
         el.dispatchEvent(new Event('mousedown'));
       }
-    });
+    },{allowSignalWrites:true });
   }
+
 }

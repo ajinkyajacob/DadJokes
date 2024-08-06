@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BACKEND_URL } from 'src/main';
+import { BACKEND_URL } from '../app.config';
 
 @Injectable({ providedIn: 'root' })
 export class JokeService {
