@@ -16,11 +16,17 @@ export async function connectDB() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // Send a ping to confirm a successful connection
-    await client.db("DB_DadJokes").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    return {db:client.db('DB_DadJokes'),close:async () => {
-      await client.close()
-      console.log('connectionc successfully closed')
-    }}
+    //  client.db("DB_DadJokes").command({ ping: 1 }).then(x =>{
+    // console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+    // });
+
+    return {
+      collection:client.db('DB_DadJokes').collection('dadjokes'),
+      [Symbol.asyncDispose]: async () => {
+        await client.close()
+        console.log('connectionc successfully closed')
+      },
+    };
 }
 
