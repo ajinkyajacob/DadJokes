@@ -1,0 +1,87 @@
+
+            <div class="w-full h-full flex flex-col justify-center items-center relative overflow-hidden">
+                <div
+                    class="w-full h-full flex flex-col justify-center items-center bg-gradient-to-br from-[#1e293b] via-[#111827] to-[#0f172a] px-8"
+                >
+                    <div
+                        class="absolute top-0 left-0 w-full h-full opacity-5 mix-blend-overlay"
+                    ></div>
+                    <div
+                        class="w-full max-w-2xl relative z-10 mb-24 transform transition-all duration-700 hover:scale-105"
+                    >
+                    @if (doesContainQuestion()) {
+
+                        <h1
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-[#f5f5f5] to-[#d4d4d8] text-4xl md:text-5xl font-bold mb-2 tracking-tight text-center leading-tight animate-fade-in"
+                        >
+                            {{beforeQuetionJoke()}}
+                        </h1>
+                        <p class="text-[#f5f5f5] text-3xl md:text-4xl font-light text-center mt-4 animate-pulse-slow">
+                            {{afterQuetionJoke()}}
+                        </p>
+                    }@else {
+                        <h1
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-[#f5f5f5] to-[#d4d4d8] text-4xl md:text-5xl font-bold mb-2 tracking-tight text-center leading-tight animate-fade-in"
+                        >
+                            {{joke()?.joke}}
+                        </h1>
+                    }
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between w-full px-4 md:px-24 gap-4 z-10 lg:fixed bottom-20">
+                        <button
+                            (click)="onLike.emit()"
+                            class="group bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] transition-all duration-300 py-3 px-6 rounded-full flex items-center justify-center gap-3 shadow-lg shadow-blue-900/20 hover:shadow-blue-800/30 transform hover:-translate-y-1"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-white group-hover:scale-110 transition-transform duration-300"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                            >
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                ></path>
+                            </svg>
+                            <span class="text-white font-semibold text-lg">Like</span> <span class="text-white font-semibold text-base">{{joke()?.like}}</span>
+                        </button>
+                        <button
+                            (click)="onRefresh.emit()"
+                            class="group bg-gradient-to-r from-[#64748b] to-[#475569] hover:from-[#475569] hover:to-[#334155] transition-all duration-300 py-3 px-6 rounded-full flex items-center justify-center gap-3 shadow-lg shadow-slate-900/20 hover:shadow-slate-800/30 transform hover:-translate-y-1"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-white group-hover:rotate-180 transition-transform duration-500"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                            >
+                                <path
+                                    d="M10 3.5a6.5 6.5 0 00-5.56 9.95l-1.92 1.92a.75.75 0 001.06 1.06l1.92-1.92A6.5 6.5 0 1010 3.5zm0 11a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"
+                                ></path>
+                                <path d="M10 8.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"></path>
+                            </svg>
+                            <span class="text-white font-semibold text-lg">New Joke</span>
+                        </button>
+                        <button
+                            (click)="onDislike.emit()"
+                            class="group bg-gradient-to-r from-[#ef4444] to-[#dc2626] hover:from-[#dc2626] hover:to-[#b91c1c] transition-all duration-300 py-3 px-6 rounded-full flex items-center justify-center gap-3 shadow-lg shadow-red-900/20 hover:shadow-red-800/30 transform hover:-translate-y-1"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-white group-hover:scale-110 transition-transform duration-300"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                            <span class="text-white font-semibold text-lg">Dislike</span> <span class="text-white font-semibold text-base">{{joke()?.dislike}}</span>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-0 w-full h-16 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
+                    <div class="absolute top-0 w-full h-16 bg-gradient-to-b from-[#0f172a] to-transparent"></div>
+                </div>
+            </div>
+  

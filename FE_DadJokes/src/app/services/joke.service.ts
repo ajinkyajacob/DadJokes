@@ -13,8 +13,6 @@ export class JokeService {
   private httpClient = inject(HttpClient);
   private url = inject(BACKEND_URL);
   joke = signal<Joke>({ _id: '', joke: '' });
-  like = computed(() => this.joke().like)
-  dislike = computed(() => this.joke().dislike)
   getJoke() {
     return this.httpClient.get<Joke>(`${this.url}/dadjoke`, {
       responseType: 'json',
