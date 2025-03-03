@@ -34,7 +34,7 @@
             ],
             "scripts": [],
             "server": "src/main.server.ts",
-            "prerender": true,
+            "prerender": false,
             "ssr": {
               "entry": "server.ts"
             }
@@ -55,8 +55,7 @@
               ],
               "outputHashing": "all",
               "optimization": true,
-              "prerender": false,
-              "sourceMap": true
+              "prerender": false
             },
             "development": {
               "optimization": false,
