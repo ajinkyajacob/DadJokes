@@ -12,6 +12,11 @@ export class JokeUI2Component {
 
   joke = input<Joke>()
 
+  isJokeAvalable = computed(
+    () => this.joke() && !Object.values(this.joke()!).find((x: string) => x === '')
+  );
+
+
   onLike = output()
   onDislike = output()
   onRefresh = output()

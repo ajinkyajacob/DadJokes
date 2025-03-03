@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-joke-container',
   standalone: true,
   imports: [],
-  templateUrl: './joke-container.component.html',
+  template:`<ng-content></ng-content>`,
   styleUrl: './joke-container.component.scss'
 })
 export class JokeContainerComponent {
