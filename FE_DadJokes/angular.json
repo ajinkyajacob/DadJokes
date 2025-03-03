@@ -55,7 +55,8 @@
               ],
               "outputHashing": "all",
               "optimization": true,
-              "prerender": false
+              "prerender": true,
+              "sourceMap": true
             },
             "development": {
               "optimization": false,
