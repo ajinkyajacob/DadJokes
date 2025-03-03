@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-joke-ui1',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule,],
+  imports: [MatButtonModule, MatIconModule],
   templateUrl: './joke-ui1.component.html',
   styleUrl: './joke-ui1.component.scss'
 })
