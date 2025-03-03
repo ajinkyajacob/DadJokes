@@ -26,7 +26,6 @@ export class JokeUI2Component {
 
   doesContainQuestion = computed(() => this.joke()?.joke.includes('?'))
 
-
   beforeQuetionJoke = computed(() => this.joke()?.joke.split('?')[0] + '?')
 
   afterQuetionJoke = computed(() => this.joke()?.joke.split('?')[1])

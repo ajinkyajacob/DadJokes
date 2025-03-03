@@ -26,6 +26,7 @@ export function app(): express.Express {
 
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
+    console.log('query',req.query)
     const { protocol, originalUrl, baseUrl, headers } = req;
 
     commonEngine

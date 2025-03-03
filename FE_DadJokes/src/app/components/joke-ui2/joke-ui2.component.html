@@ -30,7 +30,7 @@
             <div class="flex flex-col md:flex-row justify-between w-full px-4 md:px-24 gap-4 z-10 lg:fixed bottom-20">
                 <button
                 #likeBtn
-                    (click)="onLike.emit()"
+                    (mousedown)="onLike.emit()"
                     class="group bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] transition-all duration-300 py-3 px-6 rounded-full flex items-center justify-center gap-3 shadow-lg shadow-blue-900/20 hover:shadow-blue-800/30 transform hover:-translate-y-1"
                 >
                     <svg
@@ -47,7 +47,7 @@
                 </button>
                 <button
                 #refreshBtn
-                    (click)="onRefresh.emit()"
+                    (mousedown)="onRefresh.emit()"
                     class="group bg-gradient-to-r from-[#64748b] to-[#475569] hover:from-[#475569] hover:to-[#334155] transition-all duration-300 py-3 px-6 rounded-full flex items-center justify-center gap-3 shadow-lg shadow-slate-900/20 hover:shadow-slate-800/30 transform hover:-translate-y-1"
                 >
                     <svg
@@ -65,7 +65,7 @@
                 </button>
                 <button
                     #dislikeBtn
-                    (click)="onDislike.emit()"
+                    (mousedown)="onDislike.emit()"
                     class="group bg-gradient-to-r from-[#ef4444] to-[#dc2626] hover:from-[#dc2626] hover:to-[#b91c1c] transition-all duration-300 py-3 px-6 rounded-full flex items-center justify-center gap-3 shadow-lg shadow-red-900/20 hover:shadow-red-800/30 transform hover:-translate-y-1"
                 >
                     <svg

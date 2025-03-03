@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
     { provide: BACKEND_URL, useValue:'https://be-dad-jokes.vercel.app' },
     provideHttpClient(withFetch()), provideClientHydration(),
     provideExperimentalZonelessChangeDetection(), provideAnimationsAsync(),
-    provideRouter([], withComponentInputBinding())
+    provideRouter([])
   ],
 }
