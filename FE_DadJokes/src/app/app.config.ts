@@ -2,6 +2,7 @@ import { ApplicationConfig, InjectionToken, provideExperimentalZonelessChangeDet
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 
 
@@ -11,6 +12,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     { provide: BACKEND_URL, useValue:'https://be-dad-jokes.vercel.app' },
     provideHttpClient(withFetch()), provideClientHydration(),
-    provideExperimentalZonelessChangeDetection(), provideAnimationsAsync()
+    provideExperimentalZonelessChangeDetection(), provideAnimationsAsync(),
+    provideRouter([], withComponentInputBinding())
   ],
 }

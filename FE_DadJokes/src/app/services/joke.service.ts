@@ -41,7 +41,7 @@ export interface Joke {
 export function injectJokeService() {
   const jokeService = inject(JokeService)
 
-  jokeService.getJoke().pipe(catchError((e) => {console.log(e);return EMPTY})).subscribe(v => jokeService.joke.set(v))
+  jokeService.refreshJoke().subscribe()
   return jokeService
   
 }
